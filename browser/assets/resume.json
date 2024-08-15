@@ -1,0 +1,117 @@
+{
+  "name": "Austin Hodge",
+  "contact": {
+    "location": "Virginia Beach, VA",
+    "phone": "(757) 647-6100",
+    "email": "austinbhodge@gmail.com",
+    "github": "www.github.com/austinbhodge"
+  },
+  "summary": "Software Developer with extensive experience in designing, implementing, and maintaining web applications, focusing on modern development patterns, best practices, and enhanced user experiences.",
+  "skills": {
+    "languages": ["Typescript", "C#", "Python", "Javascript", "HTML", "CSS/SCSS", "SQL", "GO"],
+    "frameworks_and_tools": ["Angular", "React", "Blazor", "Express.js", "Nest.js", "MongoDB", "Swagger", "GraphQL", "Material", "Bootstrap", "Tailwind", "Dapper", "Firebase", "RxJS", "Docker", "AWS", "Heroku", "Azure"]
+  },
+  "experience": [
+    {
+      "title": "Software Developer",
+      "company": "Aermor LLC",
+      "location": "Virginia Beach, VA",
+      "dates": "April 2023 - Present",
+      "responsibilities": [
+        "Overhauled ASP.NET application with modern development patterns into a Blazor web app.",
+        "Designed and implemented requested functionality while consulting with a team to deliver the best UX.",
+        "Implemented best practices for code review, git, and automation for improved development efficiency."
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Devlime Labs LLC",
+      "location": "Chesapeake, VA",
+      "dates": "February 2021 - April 2023",
+      "responsibilities": [
+        "Designed application layouts and data structures for clients.",
+        "Developed angular applications with tailwind to deliver an AWS hosted MVPs."
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Stilwell & Associates",
+      "location": "Chesapeake, VA",
+      "dates": "September 2019 - February 2021",
+      "responsibilities": [
+        "Created a dynamic angular web app with thousands of settings interacting to create a client-tailored UI.",
+        "Built upon ASP.NET Web API and SQL infrastructure to support enhancements for the web application.",
+        "Implemented E2E and unit tests to increase application stability and maintainability."
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Web Teks",
+      "location": "Chesapeake, VA",
+      "dates": "January 2018 - February 2019",
+      "responsibilities": [
+        "Developed REST APIs with node.js, typescript, express, and mongodb to fulfill client deliverables.",
+        "Built purpose-driven reusable components to be used across multiple applications.",
+        "Designed and developed functionality dealing with maps, authentication, sessions, forms, state, etc."
+      ]
+    },
+    {
+      "title": "Front End Developer (contract)",
+      "company": "Prime 3 Software",
+      "location": "Norfolk, VA",
+      "dates": "January 2017 - April 2017",
+      "responsibilities": [
+        "Designed and implemented UI components to support desired functionality.",
+        "Refactored the application to be responsive for phones and tablets.",
+        "Integrated backend Java REST endpoints & authentication with angular web app."
+      ]
+    },
+    {
+      "title": "Front End Developer",
+      "company": "80-20 Software Consulting",
+      "location": "Norfolk, VA",
+      "dates": "June 2016 - September 2016",
+      "responsibilities": [
+        "Enhanced and added functionality to a custom CMS created by the company.",
+        "Worked with design consultant to create a frontend with maps, graphs, and other UI elements."
+      ]
+    },
+    {
+      "title": "Software Development Internship",
+      "company": "Exela Pharm Sciences LLC",
+      "location": "Lenoir, NC",
+      "dates": "May 2015 - September 2015",
+      "responsibilities": [
+        "Developed a chemical inventory system using python and SQLite with various integrated automations.",
+        "Create data visualiztions with data provided using javascript and D3.js."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Virginia Tech",
+      "major": "Computer Science",
+      "location": "Blacksburg, VA",
+      "dates": "September 2013 - May 2015"
+    },
+    {
+      "institution": "Tidewater Community College",
+      "major": "Engineering",
+      "location": "Virginia Beach, VA",
+      "dates": "September 2015 - May 2016"
+    }
+  ],
+  "volunteering": [
+    {
+      "organization": "HR DevFest",
+      "role": "Speaker",
+      "description": "Gave a presentation about genetic algorithms and how they could be applied to UI."
+    },
+    {
+      "organization": "Norfolk.js",
+      "role": "Speaker",
+      "description": "Gave a presentation about how you could modularize javascript task runners."
+    }
+  ],
+  "clearance": "Secret"
+}
