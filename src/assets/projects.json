@@ -1,10 +1,10 @@
 [
   {
-    "name": "Test",
+    "name": "Calordle",
     "date": "2024",
     "img": "",
-    "description" : "This is the project's description and it useful for explaining projects",
-    "source": "",
-    "link": ""
+    "description" : "Simple angular application to guess the calories in different foods",
+    "source": "https://github.com/austinbhodge/calordle",
+    "link": "https://austinbhodge.github.io/calordle/"
   }
 ]
