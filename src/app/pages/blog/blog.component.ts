@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { BlogEntry } from '../../interfaces/blogEntry';
 import blogData from '../../../assets/blog.json';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-blog',
@@ -33,4 +33,16 @@ export class BlogComponent {
   }
 
   ngOnInit() {}
+
+  setActiveEntry(entry: BlogEntry) {
+    this.activeEntry = entry;
+  }
+
+  clearActiveEntry() {
+    this.activeEntry = null;
+  }
+
+  ngOnDestroy(): void {
+    this.activeEntry = null;
+  }
 }
