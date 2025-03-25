@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { OnInit, SecurityContext } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { BlogEntry } from '../../interfaces/blogEntry';
 import blogData from '../../../assets/blog.json';
 import { Router, RouterLink } from '@angular/router';
@@ -16,16 +17,16 @@ import { marked } from 'marked';
         HttpClientModule
     ],
     templateUrl: './blog.component.html',
-    styleUrl: './blog.component.css',
+    styleUrl: './blog.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogComponent {
   blogEntries: BlogEntry[] = blogData;
   activeEntry: BlogEntry | null = null;
   undefinedIdInRoute: boolean = false;
-  markdownContent: string = '';
+  markdownContent: SafeHtml = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {}
 
   @Input()
   set id(id: string) {
@@ -58,16 +59,21 @@ export class BlogComponent {
   private loadMarkdown(filePath: string) {
     this.http.get(`assets/blog/${filePath}`, { responseType: 'text' }).subscribe(
       data => {
+        console.log(data);
         const result = marked(data);
         if (result instanceof Promise) {
-          result.then(content => this.markdownContent = content);
+          console.log(result);
+          result.then(content => this.markdownContent = this.sanitizer.bypassSecurityTrustHtml(content));
         } else {
-          this.markdownContent = result;
+          this.markdownContent = this.sanitizer.bypassSecurityTrustHtml(result);
+          console.log(this.markdownContent);
         }
+        this.cdr.detectChanges();
       },
       error => {
         console.error('Error loading markdown file:', error);
-        this.markdownContent = 'Error loading content. Please try again later.';
+        this.markdownContent = this.sanitizer.bypassSecurityTrustHtml('Error loading content. Please try again later.');
+        this.cdr.detectChanges();
       }
     );
   }
