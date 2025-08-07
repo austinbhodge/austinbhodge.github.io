@@ -1,45 +1,155 @@
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Blog</h1>
+<div class="container mx-auto px-4 py-16 min-h-screen">
+  <!-- Blog Header -->
+  <div class="text-center mb-16 animate-fade-in">
+    <h1 class="font-display text-forest-900 text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+    <p class="text-forest-600 text-lg max-w-2xl mx-auto">
+      Thoughts on software development, technology trends, and lessons learned along the way.
+    </p>
+  </div>
 
+  <!-- Blog List View -->
   @if(!undefinedIdInRoute && activeEntry == null) {
-    <section class="py-4 md:py-8">
+    <section class="max-w-4xl mx-auto animate-slide-up">
+      <div class="space-y-6">
+        <!-- Blog Entry Card -->
+        <article *ngFor="let entry of blogEntries" 
+                 class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:-translate-y-1">
+          <div class="p-8">
+            <!-- Entry Header -->
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+              <h2 class="text-forest-800 text-2xl md:text-3xl font-bold mb-2 md:mb-0 group-hover:text-emerald-600 transition-colors">
+                {{entry.title}}
+              </h2>
+              <span class="text-forest-600 text-sm font-medium bg-sage-100 px-3 py-1 rounded-full inline-block">
+                {{entry.date}}
+              </span>
+            </div>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span *ngFor="let tag of entry.tags" 
+                    class="px-3 py-1 bg-gradient-to-r from-emerald-100 to-forest-100 text-forest-700 rounded-full text-sm font-medium hover:from-emerald-200 hover:to-forest-200 transition-colors">
+                #{{tag}}
+              </span>
+            </div>
 
-      <div class="space-y-8 w-1/2">
+            <!-- Subtitle/Description -->
+            <p class="text-forest-600 text-lg leading-relaxed mb-6">
+              {{entry.subtitle}}
+            </p>
 
-        <div *ngFor="let entry of blogEntries" class="bg-white p-6 rounded-lg shadow-lg">
-          <div class="flex-row justify-between flex">
-          <h2 class="text-2xl font-bold mb-2">{{entry.title}}</h2>
-          <p class="text-gray-600 text-sm mb-2">{{entry.date}}</p>
-        </div>
-          <div class="mb-2">
-            <span *ngFor="let tag of entry.tags" class="bg-gray-600 text-sm text-white rounded-xl px-3 py-1 mr-2 mb-2">{{tag}}</span>
+            <!-- Read More Button -->
+            <a routerLink="/blog/{{entry.id}}" 
+               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-forest-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-forest-700 transition-all duration-200 shadow-md hover:shadow-lg group">
+              <span>Read Article</span>
+              <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
           </div>
-
-          <p class="text-gray-800 mb-4">{{entry.subtitle}}</p>
-          <a routerLink="/blog/{{entry.id}}" class="px-4 py-3 md:px-5 md:py-3 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-200">View</a>
-        </div>
-
+          
+          <!-- Decorative Border -->
+          <div class="h-1 bg-gradient-to-r from-emerald-400 via-forest-500 to-sage-600"></div>
+        </article>
       </div>
-
     </section>
   } @else if (!undefinedIdInRoute && activeEntry != null) {
-    <section class="py-4 md:py-8">
-      <div class="px-5 py-3 rounded-lg bg-white">
-        <h2 class="text-4xl">{{activeEntry.title}}</h2>
-        <button (click)="clearActiveEntry()" class="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600">Back to list</button>
-        <div class="blog-content" [innerHTML]="markdownContent"></div>
+    <!-- Blog Post View -->
+    <section class="max-w-4xl mx-auto animate-fade-in">
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <!-- Post Header -->
+        <div class="bg-gradient-to-r from-forest-600 to-emerald-600 p-8 md:p-12">
+          <button (click)="clearActiveEntry()" 
+                  class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur text-white font-medium rounded-lg hover:bg-white/30 transition-colors mb-6">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back to Articles
+          </button>
+          
+          <h1 class="text-white text-3xl md:text-5xl font-bold mb-4">{{activeEntry.title}}</h1>
+          
+          <div class="flex flex-wrap items-center gap-4 text-white/90">
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              {{activeEntry.date}}
+            </span>
+            
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let tag of activeEntry.tags" 
+                    class="px-3 py-1 bg-white/20 backdrop-blur rounded-full text-sm">
+                #{{tag}}
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Post Content -->
+        <div class="p-8 md:p-12">
+          <div class="prose prose-lg max-w-none 
+                      prose-headings:text-forest-800 prose-headings:font-display
+                      prose-p:text-forest-700 prose-p:leading-relaxed
+                      prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline
+                      prose-strong:text-forest-800
+                      prose-code:bg-sage-100 prose-code:text-forest-700 prose-code:px-2 prose-code:py-1 prose-code:rounded
+                      prose-pre:bg-forest-900 prose-pre:text-sage-100
+                      prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:italic
+                      prose-ul:list-disc prose-ul:list-inside
+                      prose-ol:list-decimal prose-ol:list-inside
+                      prose-li:text-forest-700"
+               [innerHTML]="markdownContent">
+          </div>
+        </div>
+        
+        <!-- Post Footer -->
+        <div class="bg-gradient-to-r from-sage-50 to-emerald-50 p-8">
+          <button (click)="clearActiveEntry()" 
+                  class="inline-flex items-center px-6 py-3 bg-forest-600 text-white font-semibold rounded-lg hover:bg-forest-700 transition-colors shadow-md hover:shadow-lg">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back to All Articles
+          </button>
+        </div>
       </div>
-
     </section>
   } @else {
-    <section class="py-4 md:py-8">
-      <h2 class="text-4xl text-center">How did you get here?</h2>
-
+    <!-- 404 State -->
+    <section class="flex flex-col items-center justify-center py-20">
+      <div class="text-center animate-fade-in">
+        <svg class="w-24 h-24 text-forest-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <h2 class="text-forest-800 text-3xl font-bold mb-4">Article Not Found</h2>
+        <p class="text-forest-600 text-lg mb-8">The blog post you're looking for doesn't exist.</p>
+        <a routerLink="/blog" 
+           class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-forest-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-forest-700 transition-colors shadow-md hover:shadow-lg">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to Blog
+        </a>
+      </div>
     </section>
   }
 
-  <div *ngIf="undefinedIdInRoute">
-    <p>Blog entry not found.</p>
+  <!-- Error State -->
+  <div *ngIf="undefinedIdInRoute" class="flex flex-col items-center justify-center py-20">
+    <div class="text-center animate-fade-in">
+      <svg class="w-24 h-24 text-red-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <h2 class="text-forest-800 text-3xl font-bold mb-4">Oops! Something went wrong</h2>
+      <p class="text-forest-600 text-lg mb-8">Blog entry not found.</p>
+      <a routerLink="/blog" 
+         class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-forest-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-forest-700 transition-colors shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        Return Home
+      </a>
+    </div>
   </div>
-
 </div>
