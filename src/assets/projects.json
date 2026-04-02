@@ -1,10 +1,58 @@
 [
   {
+    "name": "Wall-A",
+    "date": "2026",
+    "img": "",
+    "description": "A robotics project — PS5 DualSense controller-driven motor sequences on a custom-built robot platform.",
+    "source": "https://github.com/austinbhodge/wall-a",
+    "link": "https://github.com/austinbhodge/wall-a"
+  },
+  {
+    "name": "Aegis Swarm",
+    "date": "2026",
+    "img": "",
+    "description": "Autonomous drone swarm system combining real-time computer vision, acoustic triangulation, and coordinated multi-drone engagement.",
+    "source": "https://github.com/austinbhodge/aegis-swarm",
+    "link": "https://github.com/austinbhodge/aegis-swarm"
+  },
+  {
+    "name": "Deno 2D Arm",
+    "date": "2026",
+    "img": "",
+    "description": "An investigation into forward and inverse kinematics with a 2D robotic arm simulation.",
+    "source": "https://github.com/austinbhodge/deno-2d-arm",
+    "link": "https://austinbhodge.github.io/deno-2d-arm/"
+  },
+  {
+    "name": "Genetic Climbers",
+    "date": "2026",
+    "img": "",
+    "description": "Genetic algorithm simulation where agents evolve climbing strategies over generations.",
+    "source": "https://github.com/austinbhodge/genetic-climbers",
+    "link": "https://github.com/austinbhodge/genetic-climbers"
+  },
+  {
     "name": "Calordle",
     "date": "2024",
     "img": "",
-    "description" : "Simple angular application to guess the calories in different foods",
+    "description": "Wordle-inspired Angular game for guessing calories in different foods.",
     "source": "https://github.com/austinbhodge/calordle",
     "link": "https://austinbhodge.github.io/calordle/"
+  },
+  {
+    "name": "Diamond Defender",
+    "date": "2024",
+    "img": "",
+    "description": "A 2D browser game — WASD to move, hold click to fire. Built with TypeScript.",
+    "source": "https://github.com/austinbhodge/diamond-defender",
+    "link": "https://austinbhodge.github.io/diamond-defender/"
+  },
+  {
+    "name": "Rhyme Calculator",
+    "date": "2020",
+    "img": "",
+    "description": "Speed project using the Datamuse API to find and graph rhyming words by score.",
+    "source": "https://github.com/austinbhodge/rhyme-calculator",
+    "link": "https://austinbhodge.github.io/rhyme-calculator/"
   }
 ]
