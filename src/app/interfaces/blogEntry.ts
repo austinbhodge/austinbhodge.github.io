@@ -3,6 +3,11 @@ export interface BlogEntry {
   title: string;
   subtitle: string;
   date: string;
-  file: string;
+  file?: string;
   tags: string[];
+  video?: {
+    src: string;
+    type?: string;
+    poster?: string;
+  };
 }

@@ -1,10 +1,27 @@
 [
   {
-    "id" : 1,
+    "id": 1,
     "title": "init blog",
     "subtitle": "Writing as a tool to grow and investigate",
     "date": "8/13/2024",
     "file": "1.md",
     "tags": ["writing", "blogging"]
+  },
+  {
+    "id": 2,
+    "title": "Video + Article Demo",
+    "subtitle": "A combined video and markdown post to test the integrated experience",
+    "date": "3/27/2026",
+    "file": "1.md",
+    "video": { "src": "https://www.w3schools.com/html/mov_bbb.mp4" },
+    "tags": ["demo", "video"]
+  },
+  {
+    "id": 3,
+    "title": "Video Only Demo",
+    "subtitle": "A standalone video post with no accompanying article",
+    "date": "3/27/2026",
+    "video": { "src": "https://www.w3schools.com/html/mov_bbb.mp4" },
+    "tags": ["demo", "video"]
   }
 ]

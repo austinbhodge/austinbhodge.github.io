@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OnInit, SecurityContext } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { BlogEntry } from '../../interfaces/blogEntry';
+import { BlogVideoPlayerComponent } from '../../components/blog-video-player/blog-video-player.component';
 import blogData from '../../../assets/blog.json';
 import { Router, RouterLink } from '@angular/router';
 import { marked } from 'marked';
@@ -14,7 +15,8 @@ import { marked } from 'marked';
     imports: [
         CommonModule,
         RouterLink,
-        HttpClientModule
+        HttpClientModule,
+        BlogVideoPlayerComponent
     ],
     templateUrl: './blog.component.html',
     styleUrl: './blog.component.scss',
@@ -33,7 +35,11 @@ export class BlogComponent {
     const entry = this.blogEntries.find(x => x.id.toString() == id);
     if(entry != undefined){
       this.activeEntry = entry;
-      this.loadMarkdown(entry.file);
+      if (entry.file) {
+        this.loadMarkdown(entry.file);
+      } else {
+        this.markdownContent = '';
+      }
     } else if (id != undefined) {
       this.undefinedIdInRoute = true;
     }
@@ -43,7 +49,11 @@ export class BlogComponent {
 
   setActiveEntry(entry: BlogEntry) {
     this.activeEntry = entry;
-   this.loadMarkdown(entry.file);
+    if (entry.file) {
+      this.loadMarkdown(entry.file);
+    } else {
+      this.markdownContent = '';
+    }
   }
 
   clearActiveEntry() {

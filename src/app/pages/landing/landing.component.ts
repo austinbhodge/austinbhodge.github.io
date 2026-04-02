@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { Resume } from '../../interfaces/resume';
 import { Project } from '../../interfaces/project';
+import { SkillTreeComponent } from '../../components/skill-tree/skill-tree.component';
 import resumeData from '../../../assets/resume.json';
 import projectData from '../../../assets/projects.json';
 
@@ -15,7 +16,8 @@ import projectData from '../../../assets/projects.json';
         CommonModule,
         RouterOutlet,
         RouterLink,
-        RouterLinkActive
+        RouterLinkActive,
+        SkillTreeComponent
     ],
     templateUrl: './landing.component.html',
     styleUrl: './landing.component.css',

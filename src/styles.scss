@@ -1,47 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'tailwind.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');
 
 html, body {
   height: 100%;
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Fira Code', monospace;
+  font-weight: 300;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f0f4f1 0%, #e5eae2 25%, #f3f5f2 50%, #ecfdf5 75%, #f0f4f1 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  background: #fafafa;
 }
 
 app-root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* Professional Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  color: #2f3f2f;
-}
-
-p, span, a, button, input, textarea {
-  font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* Smooth scrolling */
@@ -51,13 +27,13 @@ html {
 
 /* Selection color */
 ::selection {
-  background-color: #a7f3d0;
-  color: #064e3b;
+  background-color: #d1d5db;
+  color: #111827;
 }
 
 /* Focus styles */
 :focus-visible {
-  outline: 2px solid #10b981;
+  outline: 2px solid #9ca3af;
   outline-offset: 2px;
 }
 
@@ -76,11 +52,11 @@ html {
 }
 
 @keyframes slideUp {
-  0% { 
+  0% {
     transform: translateY(20px);
     opacity: 0;
   }
-  100% { 
+  100% {
     transform: translateY(0);
     opacity: 1;
   }
@@ -92,29 +68,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f4f1;
+  background: #f3f4f6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #688a5c, #4a6349);
+  background: #9ca3af;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #527049, #3a4f3a);
-}
-
-/* Subtle nature pattern overlay */
-.nature-pattern {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: 
-    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(76, 128, 76, 0.1) 35px, rgba(76, 128, 76, 0.1) 70px),
-    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(104, 138, 92, 0.1) 35px, rgba(104, 138, 92, 0.1) 70px);
-  z-index: -1;
+  background: #6b7280;
 }

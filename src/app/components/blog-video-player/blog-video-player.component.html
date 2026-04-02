@@ -1,0 +1,42 @@
+<!-- Inline wrapper: always reserves space in document flow -->
+<div #videoWrapper class="video-inline-wrapper">
+  <div class="video-container"
+       [class.docked]="showDocked"
+       [class.docked--expanded]="showDocked && isExpanded">
+
+    <video controls
+           preload="metadata"
+           [poster]="video.poster || ''"
+           playsinline>
+      <source [src]="video.src" [type]="videoType">
+    </video>
+
+    <!-- Docked controls overlay -->
+    <div *ngIf="showDocked" class="docked-controls">
+      <!-- Expand/shrink button -->
+      <button (click)="toggleExpand()"
+              [title]="isExpanded ? 'Shrink' : 'Expand'"
+              class="dock-btn">
+        <!-- Expand icon when small -->
+        <svg *ngIf="!isExpanded" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+        </svg>
+        <!-- Shrink icon when expanded -->
+        <svg *ngIf="isExpanded" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 9V4H4m0 0l5 5M9 20v-5H4m0 0l5-5m11-5h-5v5m0 0l5-5m-5 15h5v-5m0 0l-5 5"/>
+        </svg>
+      </button>
+
+      <!-- Dismiss button -->
+      <button (click)="dismiss()"
+              title="Dismiss"
+              class="dock-btn">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

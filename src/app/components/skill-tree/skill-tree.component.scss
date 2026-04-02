@@ -1,0 +1,198 @@
+:host {
+  display: block;
+}
+
+// ── Tabs ──
+.tab-btn {
+  font-family: 'Fira Code', monospace;
+  font-weight: 300;
+  color: #9ca3af;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: #4b5563;
+    background: #f9fafb;
+  }
+
+  &.active {
+    color: #111827;
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    font-weight: 400;
+  }
+}
+
+// ── Tree layout ──
+.tree-panel {
+  animation: panelIn 0.3s ease;
+}
+
+.tree-layout {
+  display: flex;
+  justify-content: center;
+}
+
+// ── Connectors ──
+.connector-v {
+  width: 1px;
+  height: 32px;
+  background: #d1d5db;
+}
+
+.connector-v-short {
+  width: 1px;
+  height: 20px;
+  background: #d1d5db;
+  margin: 0 auto;
+}
+
+.connector-h {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #d1d5db;
+}
+
+// ── Branches container ──
+.branches {
+  position: relative;
+  width: 100%;
+}
+
+.branch-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 140px;
+  max-width: 200px;
+  flex: 1;
+
+  &.single {
+    max-width: 300px;
+  }
+}
+
+// ── Nodes ──
+.node {
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.root-node {
+  font-size: 16px;
+  font-weight: 400;
+  color: #111827;
+  padding: 12px 24px;
+  border: 2px solid #111827;
+  border-radius: 8px;
+  background: white;
+  letter-spacing: 0.02em;
+}
+
+.branch-node {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: default;
+  width: 100%;
+
+  .node-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: #374151;
+  }
+
+  .node-desc {
+    font-size: 10px;
+    font-weight: 300;
+    color: #9ca3af;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+
+  &.hovered {
+    border-color: #6b7280;
+    background: #f9fafb;
+  }
+}
+
+// ── Leaves ──
+.leaves {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.leaf-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: default;
+  width: 100%;
+  position: relative;
+
+  .leaf-label {
+    font-size: 12px;
+    font-weight: 300;
+    color: #6b7280;
+    transition: color 0.2s ease;
+  }
+
+  .leaf-desc {
+    font-size: 10px;
+    font-weight: 300;
+    color: #9ca3af;
+    margin-top: 2px;
+    animation: panelIn 0.2s ease;
+  }
+
+  &:hover,
+  &.hovered {
+    background: #f3f4f6;
+
+    .leaf-label {
+      color: #111827;
+    }
+  }
+
+  &.solo {
+    padding: 4px 8px;
+
+    .leaf-desc.visible {
+      display: block;
+      color: #9ca3af;
+    }
+  }
+}
+
+// ── Animations ──
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

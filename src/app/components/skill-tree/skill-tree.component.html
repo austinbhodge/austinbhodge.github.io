@@ -1,0 +1,77 @@
+<!-- Family Tabs -->
+<div class="flex flex-wrap gap-2 mb-10 border-b border-gray-200 pb-4">
+  <button *ngFor="let family of families"
+          (click)="selectFamily(family)"
+          class="tab-btn px-4 py-2 rounded-lg text-sm transition-all duration-200"
+          [class.active]="activeFamily?.id === family.id">
+    {{ formatLabel(family.label) }}
+  </button>
+</div>
+
+<!-- Active Family Tree -->
+<div *ngIf="activeFamily" class="tree-panel animate-fade-in" [attr.data-family]="activeFamily.id">
+
+  <!-- Family description -->
+  <p *ngIf="activeFamily.description" class="text-gray-500 text-sm font-light mb-8">
+    {{ activeFamily.description }}
+  </p>
+
+  <!-- Top-down tree -->
+  <div class="tree-layout">
+    <!-- Root node (family name) -->
+    <div class="flex flex-col items-center">
+      <div class="node root-node"
+           (mouseenter)="onNodeHover(activeFamily.id)"
+           (mouseleave)="onNodeLeave()">
+        {{ formatLabel(activeFamily.label) }}
+      </div>
+
+      <!-- Vertical connector from root -->
+      <div class="connector-v" *ngIf="activeFamily.children?.length"></div>
+
+      <!-- Horizontal rail + branches -->
+      <div class="branches" *ngIf="activeFamily.children?.length">
+        <div class="connector-h"></div>
+
+        <div class="branch-group">
+          <div *ngFor="let branch of activeFamily.children; let last = last; let first = first"
+               class="branch"
+               [class.single]="activeFamily.children?.length === 1">
+
+            <!-- Vertical connector down to branch node -->
+            <div class="connector-v-short"></div>
+
+            <!-- Branch node -->
+            <div class="node branch-node"
+                 [class.hovered]="hoveredNode === branch.id"
+                 (mouseenter)="onNodeHover(branch.id)"
+                 (mouseleave)="onNodeLeave()">
+              <span class="node-label">{{ formatLabel(branch.label) }}</span>
+              <span *ngIf="branch.description" class="node-desc">{{ branch.description }}</span>
+            </div>
+
+            <!-- Leaf nodes under this branch -->
+            <div class="leaves" *ngIf="branch.children?.length">
+              <div *ngFor="let leaf of branch.children"
+                   class="node leaf-node"
+                   [class.hovered]="hoveredNode === leaf.id"
+                   (mouseenter)="onNodeHover(leaf.id)"
+                   (mouseleave)="onNodeLeave()">
+                <span class="leaf-label">{{ leaf.label }}</span>
+                <span *ngIf="leaf.description && hoveredNode === leaf.id" class="leaf-desc">{{ leaf.description }}</span>
+              </div>
+            </div>
+
+            <!-- If branch has no children but has a description, show it as a leaf -->
+            <div class="leaves" *ngIf="!branch.children?.length && branch.description">
+              <div class="node leaf-node solo"
+                   [class.hovered]="hoveredNode === branch.id">
+                <span class="leaf-desc visible">{{ branch.description }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

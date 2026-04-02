@@ -1,8 +1,8 @@
 <div class="container mx-auto px-4 py-16 min-h-screen">
   <!-- Blog Header -->
   <div class="text-center mb-16 animate-fade-in">
-    <h1 class="font-display text-forest-900 text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-    <p class="text-forest-600 text-lg max-w-2xl mx-auto">
+    <h1 class="text-gray-900 text-4xl md:text-5xl font-medium mb-4">Letters for the Super Intelligence</h1>
+    <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">
       Thoughts on software development, technology trends, and lessons learned along the way.
     </p>
   </div>
@@ -12,63 +12,72 @@
     <section class="max-w-4xl mx-auto animate-slide-up">
       <div class="space-y-6">
         <!-- Blog Entry Card -->
-        <article *ngFor="let entry of blogEntries" 
-                 class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:-translate-y-1">
+        <article *ngFor="let entry of blogEntries"
+                 class="group bg-white rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-300 overflow-hidden hover:-translate-y-1">
           <div class="p-8">
             <!-- Entry Header -->
             <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-              <h2 class="text-forest-800 text-2xl md:text-3xl font-bold mb-2 md:mb-0 group-hover:text-emerald-600 transition-colors">
-                {{entry.title}}
-              </h2>
-              <span class="text-forest-600 text-sm font-medium bg-sage-100 px-3 py-1 rounded-full inline-block">
+              <div class="flex items-center gap-3">
+                <span *ngIf="entry.video"
+                      class="flex items-center justify-center w-8 h-8 bg-gray-900 rounded-full flex-shrink-0"
+                      title="Video post">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </span>
+                <h2 class="text-gray-900 text-2xl md:text-3xl font-medium mb-2 md:mb-0 group-hover:text-gray-700 transition-colors">
+                  {{entry.title}}
+                </h2>
+              </div>
+              <span class="text-gray-600 text-sm font-normal bg-gray-100 px-3 py-1 rounded-full inline-block">
                 {{entry.date}}
               </span>
             </div>
-            
+
             <!-- Tags -->
             <div class="flex flex-wrap gap-2 mb-4">
-              <span *ngFor="let tag of entry.tags" 
-                    class="px-3 py-1 bg-gradient-to-r from-emerald-100 to-forest-100 text-forest-700 rounded-full text-sm font-medium hover:from-emerald-200 hover:to-forest-200 transition-colors">
+              <span *ngFor="let tag of entry.tags"
+                    class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-normal border border-gray-200">
                 #{{tag}}
               </span>
             </div>
 
             <!-- Subtitle/Description -->
-            <p class="text-forest-600 text-lg leading-relaxed mb-6">
+            <p class="text-gray-600 text-lg leading-relaxed mb-6 font-light">
               {{entry.subtitle}}
             </p>
 
             <!-- Read More Button -->
-            <a routerLink="/blog/{{entry.id}}" 
-               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-forest-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-forest-700 transition-all duration-200 shadow-md hover:shadow-lg group">
-              <span>Read Article</span>
+            <a routerLink="/blog/{{entry.id}}"
+               class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-normal rounded-lg hover:bg-gray-800 transition-all duration-200 group">
+              <span>@if (entry.video && !entry.file) {Watch Video} @else if (entry.video && entry.file) {Watch & Read} @else {Read Article}</span>
               <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </a>
           </div>
-          
+
           <!-- Decorative Border -->
-          <div class="h-1 bg-gradient-to-r from-emerald-400 via-forest-500 to-sage-600"></div>
+          <div class="h-1 bg-gray-900 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
         </article>
       </div>
     </section>
   } @else if (!undefinedIdInRoute && activeEntry != null) {
     <!-- Blog Post View -->
     <section class="max-w-4xl mx-auto animate-fade-in">
-      <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
         <!-- Post Header -->
-        <div class="bg-gradient-to-r from-forest-600 to-emerald-600 p-8 md:p-12">
-          <button (click)="clearActiveEntry()" 
-                  class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur text-white font-medium rounded-lg hover:bg-white/30 transition-colors mb-6">
+        <div class="bg-gray-900 p-8 md:p-12">
+          <button (click)="clearActiveEntry()"
+                  class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur text-white font-normal rounded-lg hover:bg-white/20 transition-colors mb-6">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
             Back to Articles
           </button>
-          
-          <h1 class="text-white text-3xl md:text-5xl font-bold mb-4">{{activeEntry.title}}</h1>
-          
+
+          <h1 class="text-white text-3xl md:text-5xl font-medium mb-4">{{activeEntry.title}}</h1>
+
           <div class="flex flex-wrap items-center gap-4 text-white/90">
             <span class="flex items-center">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,37 +85,49 @@
               </svg>
               {{activeEntry.date}}
             </span>
-            
+
             <div class="flex flex-wrap gap-2">
-              <span *ngFor="let tag of activeEntry.tags" 
-                    class="px-3 py-1 bg-white/20 backdrop-blur rounded-full text-sm">
+              <span *ngFor="let tag of activeEntry.tags"
+                    class="px-3 py-1 bg-white/10 backdrop-blur rounded-full text-sm">
                 #{{tag}}
               </span>
             </div>
           </div>
         </div>
-        
+
         <!-- Post Content -->
         <div class="p-8 md:p-12">
-          <div class="prose prose-lg max-w-none 
-                      prose-headings:text-forest-800 prose-headings:font-display
-                      prose-p:text-forest-700 prose-p:leading-relaxed
-                      prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline
-                      prose-strong:text-forest-800
-                      prose-code:bg-sage-100 prose-code:text-forest-700 prose-code:px-2 prose-code:py-1 prose-code:rounded
-                      prose-pre:bg-forest-900 prose-pre:text-sage-100
-                      prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:italic
-                      prose-ul:list-disc prose-ul:list-inside
-                      prose-ol:list-decimal prose-ol:list-inside
-                      prose-li:text-forest-700"
-               [innerHTML]="markdownContent">
-          </div>
+          <!-- Video player -->
+          @if (activeEntry.video) {
+            <app-blog-video-player
+              [video]="activeEntry.video"
+              [dockEnabled]="!!activeEntry.file"
+              class="mb-8 block">
+            </app-blog-video-player>
+          }
+
+          <!-- Markdown content -->
+          @if (activeEntry.file) {
+            <div class="prose prose-lg max-w-none
+                        prose-headings:text-gray-900
+                        prose-p:text-gray-700 prose-p:leading-relaxed
+                        prose-a:text-gray-900 prose-a:underline hover:prose-a:text-gray-600
+                        prose-strong:text-gray-900
+                        prose-code:bg-gray-100 prose-code:text-gray-700 prose-code:px-2 prose-code:py-1 prose-code:rounded
+                        prose-pre:bg-gray-900 prose-pre:text-gray-100
+                        prose-blockquote:border-l-4 prose-blockquote:border-gray-400 prose-blockquote:italic
+                        prose-ul:list-disc prose-ul:list-inside
+                        prose-ol:list-decimal prose-ol:list-inside
+                        prose-li:text-gray-700"
+                 [innerHTML]="markdownContent">
+            </div>
+          }
         </div>
-        
+
         <!-- Post Footer -->
-        <div class="bg-gradient-to-r from-sage-50 to-emerald-50 p-8">
-          <button (click)="clearActiveEntry()" 
-                  class="inline-flex items-center px-6 py-3 bg-forest-600 text-white font-semibold rounded-lg hover:bg-forest-700 transition-colors shadow-md hover:shadow-lg">
+        <div class="bg-gray-50 p-8 border-t border-gray-200">
+          <button (click)="clearActiveEntry()"
+                  class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-normal rounded-lg hover:bg-gray-800 transition-colors">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
@@ -119,13 +140,13 @@
     <!-- 404 State -->
     <section class="flex flex-col items-center justify-center py-20">
       <div class="text-center animate-fade-in">
-        <svg class="w-24 h-24 text-forest-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-24 h-24 text-gray-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
-        <h2 class="text-forest-800 text-3xl font-bold mb-4">Article Not Found</h2>
-        <p class="text-forest-600 text-lg mb-8">The blog post you're looking for doesn't exist.</p>
-        <a routerLink="/blog" 
-           class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-forest-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-forest-700 transition-colors shadow-md hover:shadow-lg">
+        <h2 class="text-gray-900 text-3xl font-medium mb-4">Article Not Found</h2>
+        <p class="text-gray-600 text-lg mb-8 font-light">The blog post you're looking for doesn't exist.</p>
+        <a routerLink="/blog"
+           class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-normal rounded-lg hover:bg-gray-800 transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
           </svg>
@@ -138,13 +159,13 @@
   <!-- Error State -->
   <div *ngIf="undefinedIdInRoute" class="flex flex-col items-center justify-center py-20">
     <div class="text-center animate-fade-in">
-      <svg class="w-24 h-24 text-red-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-24 h-24 text-gray-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-      <h2 class="text-forest-800 text-3xl font-bold mb-4">Oops! Something went wrong</h2>
-      <p class="text-forest-600 text-lg mb-8">Blog entry not found.</p>
-      <a routerLink="/blog" 
-         class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-forest-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-forest-700 transition-colors shadow-md hover:shadow-lg">
+      <h2 class="text-gray-900 text-3xl font-medium mb-4">Oops! Something went wrong</h2>
+      <p class="text-gray-600 text-lg mb-8 font-light">Blog entry not found.</p>
+      <a routerLink="/blog"
+         class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-normal rounded-lg hover:bg-gray-800 transition-colors">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
         </svg>
