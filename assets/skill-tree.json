@@ -1,0 +1,150 @@
+{
+  "id": "root",
+  "label": "austin.hodge",
+  "expanded": true,
+  "children": [
+    {
+      "id": "perception",
+      "label": "perception_intelligence",
+      "description": "Data processing, analysis, and algorithmic reasoning",
+      "expanded": true,
+      "children": [
+        { "id": "python", "label": "Python", "description": "Scripting, automation, data pipelines" },
+        { "id": "d3", "label": "Data Visualization (D3.js)", "description": "Interactive charts and sensor data displays" },
+        { "id": "genetic", "label": "Genetic Algorithms", "description": "Evolutionary optimization for UI and system design" },
+        { "id": "sql", "label": "SQL", "description": "Relational data querying and analysis" }
+      ]
+    },
+    {
+      "id": "control",
+      "label": "control_communication",
+      "description": "APIs, real-time systems, and protocol design",
+      "expanded": true,
+      "children": [
+        {
+          "id": "apis",
+          "label": "apis",
+          "description": "RESTful and GraphQL service design",
+          "expanded": true,
+          "children": [
+            { "id": "express", "label": "Express.js", "description": "Node.js HTTP framework" },
+            { "id": "nestjs", "label": "Nest.js", "description": "Enterprise Node.js framework" },
+            { "id": "graphql", "label": "GraphQL", "description": "Typed query language for APIs" },
+            { "id": "swagger", "label": "Swagger", "description": "API documentation and design" }
+          ]
+        },
+        {
+          "id": "realtime",
+          "label": "real_time",
+          "description": "Event-driven and reactive programming",
+          "expanded": true,
+          "children": [
+            { "id": "rxjs", "label": "RxJS", "description": "Reactive streams and event composition" },
+            { "id": "websockets", "label": "WebSockets", "description": "Bidirectional real-time communication" }
+          ]
+        },
+        {
+          "id": "protocols",
+          "label": "protocols",
+          "description": "Communication standards",
+          "expanded": true,
+          "children": [
+            { "id": "rest", "label": "REST", "description": "Representational state transfer" },
+            { "id": "grpc", "label": "gRPC", "description": "High-performance RPC framework" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "label": "platform_infrastructure",
+      "description": "Deployment, hosting, and system-level programming",
+      "expanded": true,
+      "children": [
+        {
+          "id": "containers",
+          "label": "containers",
+          "description": "Containerization and orchestration",
+          "expanded": true,
+          "children": [
+            { "id": "docker", "label": "Docker", "description": "Container runtime and image management" }
+          ]
+        },
+        {
+          "id": "cloud",
+          "label": "cloud",
+          "description": "Cloud platforms and services",
+          "expanded": true,
+          "children": [
+            { "id": "aws", "label": "AWS", "description": "Amazon Web Services" },
+            { "id": "azure", "label": "Azure", "description": "Microsoft cloud platform" },
+            { "id": "heroku", "label": "Heroku", "description": "PaaS deployment" }
+          ]
+        },
+        {
+          "id": "databases",
+          "label": "databases",
+          "description": "Data persistence and storage",
+          "expanded": true,
+          "children": [
+            { "id": "mongodb", "label": "MongoDB", "description": "Document-oriented NoSQL database" },
+            { "id": "mssql", "label": "MSSQL", "description": "Microsoft SQL Server" },
+            { "id": "sqlite", "label": "SQLite", "description": "Embedded relational database" }
+          ]
+        },
+        {
+          "id": "syslang",
+          "label": "languages",
+          "description": "Systems and backend languages",
+          "expanded": true,
+          "children": [
+            { "id": "go", "label": "GO", "description": "Concurrent systems programming" },
+            { "id": "csharp", "label": "C#", "description": ".NET ecosystem and Blazor" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interface",
+      "label": "interface_experience",
+      "description": "Frontend frameworks, UI languages, and design systems",
+      "expanded": true,
+      "children": [
+        {
+          "id": "frameworks",
+          "label": "frameworks",
+          "description": "Component-based UI frameworks",
+          "expanded": true,
+          "children": [
+            { "id": "angular", "label": "Angular", "description": "Enterprise SPA framework" },
+            { "id": "react", "label": "React", "description": "Declarative UI library" },
+            { "id": "blazor", "label": "Blazor", "description": "C# WebAssembly framework" }
+          ]
+        },
+        {
+          "id": "uilang",
+          "label": "languages",
+          "description": "Frontend programming languages",
+          "expanded": true,
+          "children": [
+            { "id": "typescript", "label": "TypeScript", "description": "Typed JavaScript superset" },
+            { "id": "javascript", "label": "JavaScript", "description": "Web scripting language" },
+            { "id": "html", "label": "HTML", "description": "Markup and semantic structure" },
+            { "id": "css", "label": "CSS/SCSS", "description": "Styling and layout" }
+          ]
+        },
+        {
+          "id": "design",
+          "label": "design_systems",
+          "description": "UI component libraries and utilities",
+          "expanded": true,
+          "children": [
+            { "id": "tailwind", "label": "Tailwind", "description": "Utility-first CSS framework" },
+            { "id": "material", "label": "Material", "description": "Google Material Design components" },
+            { "id": "bootstrap", "label": "Bootstrap", "description": "Responsive CSS framework" }
+          ]
+        }
+      ]
+    }
+  ]
+}
