@@ -4,7 +4,8 @@
     "location": "Virginia Beach, VA",
     "phone": "(757) 647-6100",
     "email": "austinbhodge@gmail.com",
-    "github": "www.github.com/austinbhodge"
+    "github": "www.github.com/austinbhodge",
+    "website": "https://austinbhodge.github.io/"
   },
   "summary": "Software Developer with extensive experience in designing, implementing, and maintaining web applications, focusing on modern development patterns, best practices, and enhanced user experiences.",
   "skills": {
@@ -13,14 +14,14 @@
   },
   "experience": [
     {
-      "title": "Software Developer",
+      "title": "Senior Software Developer",
       "company": "Aermor LLC",
       "location": "Virginia Beach, VA",
       "dates": "April 2023 - Present",
       "responsibilities": [
+        "Pioneered adoption of agentic AI development practices, creating team-wide standards for prompt engineering, code review of AI-generated output, and automated testing.",
         "Overhauled ASP.NET application with modern development patterns into a Blazor web app.",
-        "Designed and implemented requested functionality while consulting with a team to deliver the best UX.",
-        "Implemented best practices for code review, git, and automation for improved development efficiency."
+        "Designed and developed different systems and features from mass document parsing to dynamically generated documents.",
       ]
     },
     {
